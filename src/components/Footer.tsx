@@ -1,13 +1,18 @@
-import { ShieldCheck, MessageCircle, Phone, ArrowUp, Lock, CheckCircle } from 'lucide-react';
+import { Shield, ArrowUp, Phone, MapPin, Mail, MessageCircle } from 'lucide-react';
 import { AGENCY_CONFIG } from '../data/cases';
+import asdullahLogo from '../assets/images/asdullah_recovery_logo_1789371670605.jpg';
 
-export function Footer() {
+interface FooterProps {
+  onOpenAdmin?: () => void;
+}
+
+export function Footer({ onOpenAdmin }: FooterProps) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer id="agency-footer" className="relative bg-[#040605] border-t border-[#18D65A]/20 pt-16 pb-12 overflow-hidden text-[#8B968E]">
+    <footer id="footer" className="relative bg-[#040605] border-t border-[#18D65A]/20 pt-16 pb-12 overflow-hidden text-[#8B968E]">
       {/* Background ambient lighting */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-32 bg-[#18D65A]/5 blur-[120px] pointer-events-none" />
 
@@ -15,109 +20,130 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/5">
           
           {/* Brand Info */}
-          <div className="md:col-span-5 flex flex-col items-start">
+          <div className="md:col-span-6 flex flex-col items-start">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-[#0B0F0C] border border-[#18D65A]/40 flex items-center justify-center text-[#18D65A] shadow-md shadow-[#18D65A]/10">
-                <ShieldCheck className="w-6 h-6" />
+              <div className="w-10 h-10 rounded-xl overflow-hidden border border-[#18D65A]/40 bg-[#0B0F0C] p-0.5 shadow-md shadow-[#18D65A]/10">
+                <img
+                  src={asdullahLogo}
+                  alt={AGENCY_CONFIG.name}
+                  className="w-full h-full object-cover rounded-[9px]"
+                  onError={(e) => {
+                    (e.target as HTMLElement).style.display = 'none';
+                  }}
+                />
               </div>
               <div className="flex flex-col">
-                <span className="font-display font-bold text-lg text-white tracking-tight">
+                <span className="font-display font-black text-lg text-white tracking-wider uppercase">
                   {AGENCY_CONFIG.name}
                 </span>
                 <span className="text-[10px] font-mono tracking-widest text-[#B8FFCC] uppercase">
-                  Digital Recovery Assistance
+                  {AGENCY_CONFIG.tagline}
                 </span>
               </div>
             </div>
 
-            <p className="text-xs text-[#8B968E] max-w-sm mb-6 leading-relaxed">
-              Providing structured guidance and documentation assistance for official WhatsApp and Instagram
-              account reviews, suspension appeals, and restriction diagnostics.
+            <p className="text-xs text-[#8B968E] max-w-md mb-6 leading-relaxed">
+              Professional, structured digital assistance for WhatsApp & Instagram account restrictions, unexpected bans, automated flag appeals, and platform re-verification.
             </p>
 
-            <a
-              href={AGENCY_CONFIG.whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#0B0F0C] border border-[#18D65A]/40 hover:border-[#18D65A] text-[#F5F7F5] px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all shadow-md shadow-[#18D65A]/10"
-            >
-              <MessageCircle className="w-4 h-4 text-[#18D65A]" />
-              <span>WhatsApp: +91 8271465644</span>
-            </a>
-          </div>
-
-          {/* Quick Navigation */}
-          <div className="md:col-span-3">
-            <h4 className="text-xs font-mono uppercase tracking-widest text-white mb-4 font-semibold">
-              Quick Links
-            </h4>
-            <ul className="space-y-2.5 text-xs font-medium">
-              <li>
-                <a href="#services" className="hover:text-[#18D65A] transition-colors">
-                  Services & Scope
-                </a>
-              </li>
-              <li>
-                <a href="#timeline" className="hover:text-[#18D65A] transition-colors">
-                  Before & After Timeline
-                </a>
-              </li>
-              <li>
-                <a href="#case-studies" className="hover:text-[#18D65A] transition-colors">
-                  Case Studies & Proof
-                </a>
-              </li>
-              <li>
-                <a href="#process" className="hover:text-[#18D65A] transition-colors">
-                  Review Workflow
-                </a>
-              </li>
-              <li>
-                <a href="#faq" className="hover:text-[#18D65A] transition-colors">
-                  FAQ & Policies
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Ethical & Security Standards */}
-          <div className="md:col-span-4">
-            <h4 className="text-xs font-mono uppercase tracking-widest text-white mb-4 font-semibold flex items-center gap-2">
-              <Lock className="w-3.5 h-3.5 text-[#18D65A]" />
-              Ethical Standards
-            </h4>
-            <p className="text-xs text-[#8B968E] leading-relaxed mb-4">
-              We strictly adhere to zero-credential principles. We never request, store, or handle account passwords, SMS verification OTPs, or session cookies.
-            </p>
-            <div className="flex items-center gap-2 text-[11px] font-mono text-[#35E875]">
-              <CheckCircle className="w-3.5 h-3.5 text-[#18D65A]" />
-              <span>Official Review Channels Only</span>
+            <div className="flex flex-col space-y-2 text-xs font-mono text-[#A0AEA4]">
+              <span className="flex items-center gap-2">
+                <Phone className="w-3.5 h-3.5 text-[#18D65A]" />
+                Direct Helpline: {AGENCY_CONFIG.phone}
+              </span>
+              <a
+                href={AGENCY_CONFIG.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-[#18D65A] transition-colors"
+              >
+                <MessageCircle className="w-3.5 h-3.5 text-[#18D65A]" />
+                Official WhatsApp: {AGENCY_CONFIG.phone}
+              </a>
             </div>
           </div>
 
+          {/* Quick Navigation Links */}
+          <div className="md:col-span-3">
+            <h4 className="text-xs font-mono uppercase tracking-widest text-white mb-4 font-semibold">
+              Navigation
+            </h4>
+            <ul className="space-y-2.5 text-xs font-mono">
+              <li>
+                <a href="#home" className="hover:text-[#18D65A] transition-colors">
+                  • Home
+                </a>
+              </li>
+              <li>
+                <a href="#what-i-do" className="hover:text-[#18D65A] transition-colors">
+                  • What I Do
+                </a>
+              </li>
+              <li>
+                <a href="#reviews" className="hover:text-[#18D65A] transition-colors">
+                  • Reviews & Proofs
+                </a>
+              </li>
+              <li>
+                <a href="#how-it-works" className="hover:text-[#18D65A] transition-colors">
+                  • How It Works
+                </a>
+              </li>
+              <li>
+                <a href="#contact" className="hover:text-[#18D65A] transition-colors">
+                  • Book Intake / Contact
+                </a>
+              </li>
+              {onOpenAdmin && (
+                <li className="pt-2">
+                  <button
+                    onClick={onOpenAdmin}
+                    className="text-[#35E875] hover:underline transition-colors flex items-center gap-1 cursor-pointer"
+                  >
+                    <span>• Open Dispatch Console</span>
+                  </button>
+                </li>
+              )}
+            </ul>
+          </div>
+
+          {/* Independent Notice & Scope */}
+          <div className="md:col-span-3">
+            <h4 className="text-xs font-mono uppercase tracking-widest text-white mb-4 font-semibold">
+              Security & Privacy
+            </h4>
+            <ul className="space-y-2.5 text-xs font-mono text-[#8B968E]">
+              <li>✓ Zero Passwords Required</li>
+              <li>✓ Zero SMS OTP Requests</li>
+              <li>✓ Official Platform Interface Appeals</li>
+              <li>✓ Encrypted Client Communications</li>
+              <li>✓ Independent Verification Guidance</li>
+            </ul>
+          </div>
+
         </div>
 
-        {/* Legal Disclaimer Mandate */}
-        <div className="pt-8 text-[11px] font-mono leading-relaxed space-y-3">
-          <p className="text-[#8B968E]/80">
-            <strong>LEGAL DISCLAIMER:</strong> {AGENCY_CONFIG.name} is an independent digital recovery assistance consultancy. We are not affiliated with, endorsed by, authorized by, or sponsored by WhatsApp LLC, Meta Platforms, Inc., or Instagram. All product names, logos, and brands are property of their respective owners. We do not engage in hacking, unauthorized system access, or circumvention of technological security protections. All recovery requests are processed strictly through official platform review channels.
+        {/* Disclaimer Note */}
+        <div className="py-6 border-b border-white/5 text-[11px] font-mono leading-relaxed text-[#6E7B71]">
+          <p>
+            <strong className="text-[#8B968E]">Disclaimer & Legal Notice:</strong> Asdullah Ahmed provides independent technical advisory and structured appeal statement preparation for account review requests. We are an independent consultancy and are not affiliated, endorsed, authorized, or in any way officially associated with WhatsApp LLC, Meta Platforms, Inc., or Instagram. Official review verdicts and reinstatement determinations are solely and exclusively issued by the respective platform trust & safety operations. No recovery outcome is guaranteed.
+          </p>
+        </div>
+
+        {/* Bottom copyright and scroll to top */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
+          <p className="text-[#8B968E] text-center sm:text-left">
+            © {new Date().getFullYear()} {AGENCY_CONFIG.name}. All rights reserved. Built for secure digital communication assistance.
           </p>
 
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/5 text-[10px] text-[#8B968E]">
-            <span>
-              © {new Date().getFullYear()} {AGENCY_CONFIG.name}. All rights reserved.
-            </span>
-
-            <button
-              onClick={scrollToTop}
-              className="flex items-center gap-1.5 text-[#8B968E] hover:text-[#18D65A] transition-colors"
-            >
-              <span>Back to Top</span>
-              <ArrowUp className="w-3 h-3" />
-            </button>
-          </div>
+          <button
+            onClick={scrollToTop}
+            className="flex items-center gap-2 text-[#B8FFCC] hover:text-[#18D65A] transition-colors cursor-pointer"
+          >
+            <span>Back to top</span>
+            <ArrowUp className="w-4 h-4" />
+          </button>
         </div>
-
       </div>
     </footer>
   );

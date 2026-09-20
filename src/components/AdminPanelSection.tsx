@@ -229,7 +229,8 @@ export function AdminPanelSection() {
 
   return (
     <section
-      id="admin-panel"
+      id="admin"
+      data-id="admin-panel"
       className="relative py-20 bg-[#060A07] border-t-2 border-[#18D65A]/30 text-[#F5F7F5] overflow-hidden"
     >
       {/* Background glow effects */}

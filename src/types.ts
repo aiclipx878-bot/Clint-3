@@ -48,3 +48,4 @@ export interface FaqItem {
   answer: string;
   category: 'General' | 'Security' | 'Platform Policies';
 }
+
