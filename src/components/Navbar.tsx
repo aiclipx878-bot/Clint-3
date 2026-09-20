@@ -33,7 +33,7 @@ export function Navbar() {
   const navLinks = [
     { name: 'Home', href: '#home', id: 'home' },
     { name: 'Services', href: '#services', id: 'services' },
-    { name: 'Real Life Work', href: '#real-life-work', id: 'real-life-work' },
+    { name: 'Reviews', href: '#reviews', id: 'reviews' },
     { name: 'Case Studies', href: '#case-studies', id: 'case-studies' },
     { name: 'Process', href: '#process', id: 'process' },
     { name: 'Why Us', href: '#why-us', id: 'why-us' },

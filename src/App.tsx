@@ -5,7 +5,6 @@ import { HeroSection } from './components/HeroSection';
 import { TrustStrip } from './components/TrustStrip';
 import { ServicesSection } from './components/ServicesSection';
 import { BeforeAfterSlider } from './components/BeforeAfterSlider';
-import { RealLifeWorkSection } from './components/RealLifeWorkSection';
 import { CaseStudiesGallery } from './components/CaseStudiesGallery';
 import { ProcessTimeline } from './components/ProcessTimeline';
 import { WhyChooseUs } from './components/WhyChooseUs';
@@ -35,7 +34,6 @@ export default function App() {
           <TrustStrip />
           <ServicesSection />
           <BeforeAfterSlider />
-          <RealLifeWorkSection />
           <CaseStudiesGallery />
           <ProcessTimeline />
           <WhyChooseUs />
